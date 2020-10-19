@@ -97,8 +97,8 @@ library(tidyverse)
 .pull-left[
 #### probabilidades discretas
 ```{r message=FALSE, warning=FALSE, echo=FALSE}
-distribucion <- c("min(), max()", "mean()", "median()", "sum()", "var(), sd()")
-en_R <- c("valores mínimos y máximos", "media", "mediana", "suma de los valores", "varianza y desviación típica")
+distribucion <- c("binomial", "poisson", "geométrica", "hipergeométrica", "binomial negativa")
+en_R <- c("binom", "pois", "geom", "hyper", "nbinom")
 table1 <- cbind(distribucion, en_R)
 table1 %>%
   knitr::kable(format="html")
@@ -107,9 +107,9 @@ table1 %>%
 .pull-right[
 #### probabilidades continuas
 ```{r message=FALSE, warning=FALSE, echo=FALSE}
-dplyr <- c("first()", "last()", "n()", "n_distinct()", "nth()")
-descripción <- c("primer valor de un vector", "último valor de un vector", "el numero de valores en un vector", "número de valores distintos en un vector", "extraer el valor que ocupa la posición n en un vector")
-table2 <- cbind(dplyr, descripción)
+distribucion <- c("uniforme", "normal", "t de Student", "F de Fisher", "Chi Cuadrado", "Exponencial", "Gamma")
+en_R <- c("unif", "norm", "t", "F", "chisq", "exp", "gamma")
+table2 <- cbind(distribucion, en_R)
 table2 %>%
   knitr::kable(format="html")
 ```
@@ -149,19 +149,282 @@ Para cada distribución, R dispone de cuatro funciones. Se puede acceder a cada 
 
 `r emo::ji("pushpin")` **.blue[r: función para simular datos con dicha distribución.]**
 
+--
+
+
+
+.bg-washed-yellow.b--gold.ba.bw2.br3.shadow-5.ph4.mt2[
+
+* Después de la letra **d**, **p**, **q** o **r** especificamos la distribución con la que vamos a trabajar. 
+
+
+]
+
+
 
 
 ---
 
+## Por ejemplo: la distribución normal
 
-Así, por ejemplo, para la distribución normal, la función de densidad se obtiene como dnorm(), la función de distribución como pnorm(), los cuantiles se calculan mediante qnorm() y se pueden generar valores aleatorios con distribución normal mediante rnorm(). Puede consultarse la ayuda, help(dnorm) para conocer la sintaxis específica de estas funciones.
+
+--
+
+`r emo::ji("pushpin")`  **.black[la función de densidad se obtiene como dnorm()]**
+
+
+--
+
+`r emo::ji("pushpin")` **.red[la función de distribución como pnorm()]**
+
+--
+
+`r emo::ji("pushpin")` **.green[los cuantiles se calculan mediante qnorm()]**
+
+--
+
+
+`r emo::ji("pushpin")` **.blue[se pueden generar valores aleatorios con distribución normal mediante rnorm()]**
+
+
 
 
 ---
 
+## Distribución Binomial
+
+Si X sigue una distribución binomial $$B(n,p)$$ entonces:
+
+
+
+
+.bg-washed-yellow.b--gold.ba.bw2.br3.shadow-5.ph4.mt2[
+
+
+$$
+ P(X=k)=dbinom(k,n,p)
+$$
+
+
+$$
+ P(X≤k)=pbinom(k,n,p)
+$$
+
+
+
+$$
+ qa=min{x:P(X≤x)≥a}=qbinom(a,n,p)
+$$
+
+
+]
+
+
+* Para generar muestras aleatorias con esta distribución
+
+
+.bg-washed-yellow.b--gold.ba.bw2.br3.shadow-5.ph4.mt2[
+
+
+$$
+ rbinom(m,n,p)
+$$
+   
+
+]
+
+---
+ 
+## Distribuciones discretas
+
+#### Distribución binomial
+
+
+$$
+Si X≈B(10,0.6)
+$$ 
+tenemos:
+$$
+    P(X=8)
+$$ 
+
+```{r}
+dbinom(8,10,0.6)
+```
+
+
+
+$$
+P(X≤8)
+$$
+```{r}
+pbinom(8,10,0.6)
+```
+
 
 
 ---
+
+#### Distribución binomial
+
+
+$$
+q0.95=min{x:P(X≤x)≥0.95}
+$$
+
+
+```{r}
+qbinom(0.95,10,0.6)
+```
+
+
+* Podemos obtener simultáneamente varios cuantiles:
+
+```{r}
+qbinom(c(0.05,0.95),10,0.6)
+```
+
+
+
+* Simulamos 15 valores de esta distribución:
+
+```{r}
+rbinom(15,10,0.6)
+```
+
+
+---
+
+#### Distribución binomial
+
+```{r}
+plot(dbinom(0:10,10,0.6),type="h",xlab="k",ylab="P(X=k)",main="Función de Probabilidad B(10,0.6)")
+```
+
+
+---
+
+## Distribuciones continuas
+
+#### Distribución normal
+
+Si X sigue una distribución normal $$N(μ,σ)$$, entonces:
+
+$$   
+f(x)=dnorm(x,mu,sigma)
+$$
+
+
+$$
+P(X≤k)=pnorm(x,mu,sigma)
+$$
+
+
+$$
+qa=min{x:P(X≤x)≥a}=qnorm(a,mu,sigma)
+$$
+
+$$
+rnorm(n,mu,sigma) genera n
+$$
+
+
+valores aleatorios $$N(μ,σ)$$
+
+
+
+
+---
+
+#### Distribución normal
+
+
+Supongamos que $$X≈N(170,12)$$
+
+* Calculamos $$f(178)$$
+
+```{r}
+dnorm(178,170,12)
+```
+
+
+
+* Calculamos la probabilidad $$P(X≤180)$$
+
+```{r}
+pnorm(180,170,12)
+```
+
+
+
+---
+
+#### Distribución normal
+
+
+$$P(X>168)$$
+```{r}
+1-pnorm(168,170,12)
+```
+
+* Es lo mismo que escribir
+
+```{r}
+pnorm(168,170,12, lower.tail=FALSE)
+```
+
+
+
+$P(150≤X≤168)$
+
+
+```{r}
+pnorm(168,170,12)-pnorm(150,170,12)
+```
+
+---
+
+#### Distribución normal
+
+$z0.95=min{x:P(X≤x)≥0.95}$
+
+```{r}
+qnorm(0.95,170,12)
+```
+
+* Si no se especifican media y varianza, R entiende que trabajamos con la distribución normal estándar. La siguiente instrucción nos proporciona los cuantiles 0.025 y 0.975 de la $N(0,1)$:
+
+```{r}
+qnorm(c(0.025,0.975))
+```
+
+
+
+* Simulamos 15 valores de esta distribución:
+
+```{r}
+rnorm(15,170,12)
+```
+
+
+
+
+---
+
+* No es demasiado difícil representar el área correspondiente a la probabilidad que se acaba de calcular:
+
+```{r out.width = '50%'}
+regionX=seq(150,168,0.01)            # Intervalo a sombrear
+xP <- c(150,regionX,168)             # Base de los polígonos que crean el efecto "sombra"
+yP <- c(0,dnorm(regionX,170,12),0)   # Altura de los polígonos sombreados
+curve(dnorm(x,170,12),xlim=c(130,210),yaxs="i",ylim=c(0,0.035),ylab="f(x)",
+      main='Densidad N(170,12)') 
+polygon(xP,yP,col="green")
+box()
+```
+
+---
+
 
 ## Bibliografía 
 

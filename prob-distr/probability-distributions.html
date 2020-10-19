@@ -81,24 +81,24 @@ El paquete `stats` de R (que se instala por defecto al instalar R, y se carga en
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; min(), max() &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; valores mínimos y máximos &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; binomial &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; binom &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; mean() &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; media &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; poisson &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; pois &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; median() &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; mediana &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; geométrica &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; geom &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; sum() &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; suma de los valores &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; hipergeométrica &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; hyper &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; var(), sd() &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; varianza y desviación típica &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; binomial negativa &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; nbinom &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -108,30 +108,38 @@ El paquete `stats` de R (que se instala por defecto al instalar R, y se carga en
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; dplyr &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; descripción &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; distribucion &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; en_R &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; first() &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; primer valor de un vector &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; uniforme &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; unif &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; last() &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; último valor de un vector &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; normal &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; norm &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; n() &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; el numero de valores en un vector &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; t de Student &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; t &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; n_distinct() &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; número de valores distintos en un vector &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F de Fisher &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; nth() &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; extraer el valor que ocupa la posición n en un vector &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Chi Cuadrado &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; chisq &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Exponencial &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; exp &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gamma &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; gamma &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -172,17 +180,354 @@ Para cada distribución, R dispone de cuatro funciones. Se puede acceder a cada 
 
 📌 **.blue[r: función para simular datos con dicha distribución.]**
 
+--
+
+
+
+.bg-washed-yellow.b--gold.ba.bw2.br3.shadow-5.ph4.mt2[
+
+* Después de la letra **d**, **p**, **q** o **r** especificamos la distribución con la que vamos a trabajar. 
+
+
+]
+
+
 
 
 ---
 
+## Por ejemplo: la distribución normal
 
-Así, por ejemplo, para la distribución normal, la función de densidad se obtiene como dnorm(), la función de distribución como pnorm(), los cuantiles se calculan mediante qnorm() y se pueden generar valores aleatorios con distribución normal mediante rnorm(). Puede consultarse la ayuda, help(dnorm) para conocer la sintaxis específica de estas funciones.
+
+--
+
+📌  **.black[la función de densidad se obtiene como dnorm()]**
+
+
+--
+
+📌 **.red[la función de distribución como pnorm()]**
+
+--
+
+📌 **.green[los cuantiles se calculan mediante qnorm()]**
+
+--
+
+
+📌 **.blue[se pueden generar valores aleatorios con distribución normal mediante rnorm()]**
 
 
 
 
 ---
+
+## Distribución Binomial
+
+Si X sigue una distribución binomial `$$B(n,p)$$` entonces:
+
+
+
+
+.bg-washed-yellow.b--gold.ba.bw2.br3.shadow-5.ph4.mt2[
+
+
+$$
+ P(X=k)=dbinom(k,n,p)
+$$
+
+
+$$
+ P(X≤k)=pbinom(k,n,p)
+$$
+
+
+
+$$
+ qa=min{x:P(X≤x)≥a}=qbinom(a,n,p)
+$$
+
+
+]
+
+
+* Para generar muestras aleatorias con esta distribución
+
+
+.bg-washed-yellow.b--gold.ba.bw2.br3.shadow-5.ph4.mt2[
+
+
+$$
+ rbinom(m,n,p)
+$$
+   
+
+]
+
+---
+ 
+## Distribuciones discretas
+
+#### Distribución binomial
+
+
+$$
+Si X≈B(10,0.6)
+$$ 
+tenemos:
+$$
+    P(X=8)
+$$ 
+
+
+```r
+dbinom(8,10,0.6)
+```
+
+```
+## [1] 0.1209324
+```
+
+
+
+$$
+P(X≤8)
+$$
+
+```r
+pbinom(8,10,0.6)
+```
+
+```
+## [1] 0.9536426
+```
+
+
+
+---
+
+#### Distribución binomial
+
+
+$$
+q0.95=min{x:P(X≤x)≥0.95}
+$$
+
+
+
+```r
+qbinom(0.95,10,0.6)
+```
+
+```
+## [1] 8
+```
+
+
+* Podemos obtener simultáneamente varios cuantiles:
+
+
+```r
+qbinom(c(0.05,0.95),10,0.6)
+```
+
+```
+## [1] 3 8
+```
+
+
+
+* Simulamos 15 valores de esta distribución:
+
+
+```r
+rbinom(15,10,0.6)
+```
+
+```
+##  [1]  7  9  6  7  7  6  6  5  6  6 10  5  6  6  5
+```
+
+
+---
+
+#### Distribución binomial
+
+
+```r
+plot(dbinom(0:10,10,0.6),type="h",xlab="k",ylab="P(X=k)",main="Función de Probabilidad B(10,0.6)")
+```
+
+![](probability-distributions_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+
+
+---
+
+## Distribuciones continuas
+
+#### Distribución normal
+
+Si X sigue una distribución normal `$$N(μ,σ)$$`, entonces:
+
+$$   
+f(x)=dnorm(x,mu,sigma)
+$$
+
+
+$$
+P(X≤k)=pnorm(x,mu,sigma)
+$$
+
+
+$$
+qa=min{x:P(X≤x)≥a}=qnorm(a,mu,sigma)
+$$
+
+$$
+rnorm(n,mu,sigma) genera n
+$$
+
+
+valores aleatorios `$$N(μ,σ)$$`
+
+
+
+
+---
+
+#### Distribución normal
+
+
+Supongamos que `$$X≈N(170,12)$$`
+
+* Calculamos `$$f(178)$$`
+
+
+```r
+dnorm(178,170,12)
+```
+
+```
+## [1] 0.02662067
+```
+
+
+
+* Calculamos la probabilidad `$$P(X≤180)$$`
+
+
+```r
+pnorm(180,170,12)
+```
+
+```
+## [1] 0.7976716
+```
+
+
+
+---
+
+#### Distribución normal
+
+
+`$$P(X&gt;168)$$`
+
+```r
+1-pnorm(168,170,12)
+```
+
+```
+## [1] 0.5661838
+```
+
+* Es lo mismo que escribir
+
+
+```r
+pnorm(168,170,12, lower.tail=FALSE)
+```
+
+```
+## [1] 0.5661838
+```
+
+
+
+`\(P(150≤X≤168)\)`
+
+
+
+```r
+pnorm(168,170,12)-pnorm(150,170,12)
+```
+
+```
+## [1] 0.3860258
+```
+
+---
+
+#### Distribución normal
+
+`\(z0.95=min{x:P(X≤x)≥0.95}\)`
+
+
+```r
+qnorm(0.95,170,12)
+```
+
+```
+## [1] 189.7382
+```
+
+* Si no se especifican media y varianza, R entiende que trabajamos con la distribución normal estándar. La siguiente instrucción nos proporciona los cuantiles 0.025 y 0.975 de la `\(N(0,1)\)`:
+
+
+```r
+qnorm(c(0.025,0.975))
+```
+
+```
+## [1] -1.959964  1.959964
+```
+
+
+
+* Simulamos 15 valores de esta distribución:
+
+
+```r
+rnorm(15,170,12)
+```
+
+```
+##  [1] 163.9238 170.5562 169.7602 168.0163 190.3594 172.3170 165.5282 160.2070
+##  [9] 145.5128 186.8483 156.5684 168.8561 174.9803 158.4404 175.4703
+```
+
+
+
+
+---
+
+* No es demasiado difícil representar el área correspondiente a la probabilidad que se acaba de calcular:
+
+
+```r
+regionX=seq(150,168,0.01)            # Intervalo a sombrear
+xP &lt;- c(150,regionX,168)             # Base de los polígonos que crean el efecto "sombra"
+yP &lt;- c(0,dnorm(regionX,170,12),0)   # Altura de los polígonos sombreados
+curve(dnorm(x,170,12),xlim=c(130,210),yaxs="i",ylim=c(0,0.035),ylab="f(x)",
+      main='Densidad N(170,12)') 
+polygon(xP,yP,col="green")
+box()
+```
+
+&lt;img src="probability-distributions_files/figure-html/unnamed-chunk-23-1.png" width="50%" /&gt;
+
+---
+
 
 ## Bibliografía 
 
