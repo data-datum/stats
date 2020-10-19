@@ -345,7 +345,7 @@ rbinom(15,10,0.6)
 ```
 
 ```
-##  [1]  7  9  6  7  7  6  6  5  6  6 10  5  6  6  5
+##  [1] 5 6 7 6 9 7 5 5 7 6 8 7 8 4 6
 ```
 
 
@@ -367,7 +367,11 @@ plot(dbinom(0:10,10,0.6),type="h",xlab="k",ylab="P(X=k)",main="Función de Proba
 
 #### Distribución normal
 
-Si X sigue una distribución normal `$$N(μ,σ)$$`, entonces:
+Si X sigue una distribución normal$$N(μ,σ)$$, entonces:
+
+
+.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt2[
+
 
 $$   
 f(x)=dnorm(x,mu,sigma)
@@ -383,14 +387,25 @@ $$
 qa=min{x:P(X≤x)≥a}=qnorm(a,mu,sigma)
 $$
 
+
+]
+
+* Para generar muestras aleatorias con esta distribución
+
+
+
+.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt1[
+
+
 $$
-rnorm(n,mu,sigma) genera n
+rnorm(n,mu,sigma) 
 $$
 
 
-valores aleatorios `$$N(μ,σ)$$`
 
 
+
+]
 
 
 ---
@@ -502,8 +517,8 @@ rnorm(15,170,12)
 ```
 
 ```
-##  [1] 163.9238 170.5562 169.7602 168.0163 190.3594 172.3170 165.5282 160.2070
-##  [9] 145.5128 186.8483 156.5684 168.8561 174.9803 158.4404 175.4703
+##  [1] 150.3791 174.7716 166.2446 160.6860 177.6035 170.5558 175.8955 172.2806
+##  [9] 179.7732 195.1430 172.8662 151.3517 166.9324 172.3106 175.8484
 ```
 
 

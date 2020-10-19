@@ -308,7 +308,11 @@ plot(dbinom(0:10,10,0.6),type="h",xlab="k",ylab="P(X=k)",main="Función de Proba
 
 #### Distribución normal
 
-Si X sigue una distribución normal $$N(μ,σ)$$, entonces:
+Si X sigue una distribución normal$$N(μ,σ)$$, entonces:
+
+
+.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt2[
+
 
 $$   
 f(x)=dnorm(x,mu,sigma)
@@ -324,14 +328,25 @@ $$
 qa=min{x:P(X≤x)≥a}=qnorm(a,mu,sigma)
 $$
 
+
+]
+
+* Para generar muestras aleatorias con esta distribución
+
+
+
+.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt1[
+
+
 $$
-rnorm(n,mu,sigma) genera n
+rnorm(n,mu,sigma) 
 $$
 
 
-valores aleatorios $$N(μ,σ)$$
 
 
+
+]
 
 
 ---
