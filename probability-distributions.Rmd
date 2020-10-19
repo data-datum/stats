@@ -1,0 +1,131 @@
+---
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+#background-image: url(img/.png)
+background-size: cover
+class: animated slideInRight fadeOutLeft, middle
+
+
+
+```{r xaringan-extra-styles, include=FALSE}
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+```
+
+
+
+```{r , echo=FALSE}
+xaringanExtra::use_tachyons()
+xaringanExtra::use_panelset()
+```
+
+
+```{r include=FALSE}
+library(countdown)
+```
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#6c5396",
+  secondary_color = "#534173",
+  inverse_header_color = "#FFFFFF"
+)
+```
+
+```{r , message=FALSE, warning=FALSE, include=FALSE} 
+library(fontawesome)
+library(emo)
+```
+
+
+```{r xaringan-tachyons, echo=FALSE}
+xaringanExtra::use_tachyons()
+xaringanExtra::use_fit_screen()
+```
+
+
+
+## Distribuciones de Probabilidad
+
+### Probabilidad y Estadística 
+### Facultad de Ciencias Agrarias
+#### Universidad Nacional del Nordeste
+
+
+---
+
+# Tipos de variables
+
+
+
+---
+
+# Distribuciones en R 
+
+El paquete stats de R (que se instala por defecto al instalar R, y se carga en memoria siempre que iniciamos sesión) implementa numerosas funciones para la realización de cálculos asociados a distintas distribuciones de probabilidad. Entre las utilizadas más comunmente podemos citar:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+
+.pull-left[
+#### probabilidades discretas
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+distribucion <- c("min(), max()", "mean()", "median()", "sum()", "var(), sd()")
+en_R <- c("valores mínimos y máximos", "media", "mediana", "suma de los valores", "varianza y desviación típica")
+table1 <- cbind(distribucion, en_R)
+table1 %>%
+  knitr::kable(format="html")
+```
+]
+.pull-right[
+#### probabilidades continuas
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+dplyr <- c("first()", "last()", "n()", "n_distinct()", "nth()")
+descripción <- c("primer valor de un vector", "último valor de un vector", "el numero de valores en un vector", "número de valores distintos en un vector", "extraer el valor que ocupa la posición n en un vector")
+table2 <- cbind(dplyr, descripción)
+table2 %>%
+  knitr::kable(format="html")
+```
+]
+
+
+
+
+
+---
+
+
+
+
+
+---
+
+## Bibliografía 
+
+* https://www.statology.org/dbinom-pbinom-qbinom-rbinom-in-r/ 
+
+* http://estadistica-dma.ulpgc.es/cursoR4ULPGC/10-distribProbabilidad.html 
+
+* Imágenes de Allison Horst https://github.com/allisonhorst/stats-illustrations 
+
+
+
+
