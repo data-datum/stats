@@ -64,10 +64,11 @@ class: animated slideInRight fadeOutLeft, middle
 
 # Distribuciones en R 
 
-El paquete stats de R (que se instala por defecto al instalar R, y se carga en memoria siempre que iniciamos sesión) implementa numerosas funciones para la realización de cálculos asociados a distintas distribuciones de probabilidad. Entre las utilizadas más comunmente podemos citar:
+El paquete `stats` de R (que se instala por defecto al instalar R, y se carga en memoria siempre que iniciamos sesión) implementa numerosas funciones para la realización de cálculos asociados a distintas distribuciones de probabilidad. Entre las utilizadas más comunmente podemos citar:
 
 
 
+--
 
 .pull-left[
 #### probabilidades discretas
@@ -142,6 +143,41 @@ El paquete stats de R (que se instala por defecto al instalar R, y se carga en m
 
 ---
 
+## Para leer la documentación correspondiente
+
+
+
+```r
+help(Distributions)
+```
+
+--
+Para cada distribución, R dispone de cuatro funciones. Se puede acceder a cada una de ellas simplemente precediendo el nombre de la distribución que figura en la tabla anterior por la letra que se indica a continuación:
+
+--
+
+📌  **.black[d: función de densidad o de probabilidad.]**
+
+
+--
+
+📌 **.red[p: función de distribución]**
+
+--
+
+📌 **.green[q: función para el cálculo de cuantiles.]**
+
+--
+
+
+📌 **.blue[r: función para simular datos con dicha distribución.]**
+
+
+
+---
+
+
+Así, por ejemplo, para la distribución normal, la función de densidad se obtiene como dnorm(), la función de distribución como pnorm(), los cuantiles se calculan mediante qnorm() y se pueden generar valores aleatorios con distribución normal mediante rnorm(). Puede consultarse la ayuda, help(dnorm) para conocer la sintaxis específica de estas funciones.
 
 
 
